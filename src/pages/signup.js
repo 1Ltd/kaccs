@@ -61,7 +61,10 @@ export default function SignUp() {
     );
   }
 
-  if (registrationClosed) {
+// Allow registration if env flag is true
+const allowNewUsers = process.env.NEXT_PUBLIC_ALLOW_REGISTRATION === "true";
+
+if (registrationClosed && !allowNewUsers) {
       return (
         <div className="min-h-screen w-screen bg-background relative overflow-hidden flex items-center justify-center p-4">
             <div className="absolute inset-0 z-0" style={{
